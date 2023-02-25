@@ -14,23 +14,23 @@ difference(){
         cube([baseWidth, baseLength, baseThickness], center=true);
         //top section, holds bearing
         translate([0,0,2*bearingSize/6])
-        cylinder(d=topWidth, h= 2*bearingSize/3, center=true);
+        cylinder(d=topWidth, h= 2*bearingSize/3, center=true, $fn=60);
 }
 //bearing
     translate([0,0,bearingSize/2])
-    sphere(d=bearingSize+tolerance);
+    sphere(d=bearingSize+tolerance, $fn=60);
 //notches for bearing movement
     translate([0,-topWidth/2,0])
-    cylinder(h=2*bearingSize/3,d=topWidth/2);
+    cylinder(h=2*bearingSize/3,d=topWidth/2, $fn=60);
     translate([0,topWidth/2,0])
-    cylinder(h=2*bearingSize/3,d=topWidth/2);
+    cylinder(h=2*bearingSize/3,d=topWidth/2, $fn=60);
     translate([topWidth/2,0,0])
-    cylinder(h=2*bearingSize/3,d=topWidth/2);
+    cylinder(h=2*bearingSize/3,d=topWidth/2, $fn=60);
     translate([-topWidth/2,0,0])
-    cylinder(h=2*bearingSize/3,d=topWidth/2);
+    cylinder(h=2*bearingSize/3,d=topWidth/2, $fn=60);
 //screw holes
     translate([0,-screwSpace/2,0])
-    cylinder(h=50, d=screwSize,center=true);
+    cylinder(h=50, d=screwSize,center=true, $fn=60);
     translate([0,screwSpace/2,0])
-    cylinder(h=50, d=screwSize,center=true);
+    cylinder(h=50, d=screwSize,center=true, $fn=60);
 }
