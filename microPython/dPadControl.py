@@ -48,6 +48,10 @@ class servoDrive(object):
             self.__right_wheel_pin.write_analog(right_wheel_speed)
         else:
             self.__right_wheel_pin.write_analog(153.6)
+
+motorcomp = 84
+forwardreverse = 1900
+
 #specific motor control functions
 def stop():
 	motors1.set_motors_speed(0, 0)
@@ -55,28 +59,29 @@ def stop():
 	sleep(1000)
 
 def forward():
-	motors1.set_motors_speed(100, 100)
+	motors1.set_motors_speed(100, motorcomp)
 	display.show(Image.ARROW_N)
-	sleep(1800) #one tire revolution
+	sleep(forwardreverse) #one tire revolution
 	stop()
 
 def leftTurn():
-	motors1.set_motors_speed(-100,100)
+	motors1.set_motors_speed(-100,motorcomp)
 	display.show(Image.ARROW_W)
 	sleep(880) #90 deg turn
 	stop()
 
 def rightTurn():
-	motors1.set_motors_speed(100,-100)
+	motors1.set_motors_speed(100,-motorcomp)
 	display.show(Image.ARROW_E)
 	sleep(880)
 	stop()
 
 def reverse():
-	motors1.set_motors_speed(-100,-100)
+	motors1.set_motors_speed(-100,-motorcomp)
 	display.show(Image.ARROW_S)
-	sleep(1800)
+	sleep(forwardreverse)
 	stop()
+
 #custom symbols for LED display
 stopSign = Image("09990:" "77077:" "90009:" "77077:" "09990:")
 checkSymbol = Image("0000:" "00009:" "00090:" "90900:" "09000:")
@@ -93,7 +98,7 @@ reverseButton = pin14
 leftButton = pin16
 rightButton = pin15
 
-dButtons = [pin13, pin14, pin16, pin15]
+
 #pull up resistors on all pins
 stopButton.set_pull(stopButton.PULL_UP)
 playButton.set_pull(playButton.PULL_UP)
